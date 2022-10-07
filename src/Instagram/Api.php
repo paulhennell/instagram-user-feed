@@ -163,7 +163,7 @@ class Api
             $session = $cookies->getCookieByName('sessionId');
 
             // Session expired (should never happened, Instagram TTL is ~ 1 year)
-            if ($session->getExpires() < time()) {
+            if ($session?->getExpires() < time()) {
                 $this->logout($username);
                 $this->login($username, $password, $imapClient);
             }
